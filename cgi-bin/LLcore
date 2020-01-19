@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        @import "https://cdn.codebox.ir/codebox/css/metrocolor.min.css";
+        .rep-wraper {
+            height: 250px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+		.rep-wraper2 {
+            height: 450px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="col-12 text-center"><a id="do-logout"class="btn btn-outline-danger m-4">Logout</a></div>
+    <div class="container">
+        <div class="card-deck mb-3 text-center">
+            <div class="col-12">
+                <table class="table">
+                    <tr>
+                        <form>
+                            <td>
+								<textarea class="form-control" id="url" placeholder="http://" rows="4" cols="50"></textarea>
+                            </td>
+                            <td>
+                                <input class="form-control" type="text" id="path" placeholder="Path to Save: ./" value="">
+								<br>
+								<select class="form-control" id='conc'>
+								  <option value="1">1 Conection</option>
+								  <option value="2" selected>2 Conections</option>
+								  <option value="4">4 Conections</option>
+								  <option value="8">8 Conections</option>
+								  <option value="12">12 Conections</option>
+								  <option value="16">16 Conections</option>
+								</select>
+                            </td>
+                            <td>
+								<select class="form-control" id='type'>
+								  <option value="1" selected>PY GET</option>
+								  <option value="2">MS CRUL</option>
+								</select>
+								<br>
+                                <button id="do-addQueue" type="button" class="btn btn-info">Add to Queue</button>
+                            </td>
+                        </form>
+                    </tr>
+                </table>
+				<hr><br>
+            </div>
+            <div class="col-12 row">
+                <h6 class="text-center col-12">Queue List</h6><br>
+                <div class="col-12 rep-wraper">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>URL</th>
+                                <th>New Link</th>
+                                <th>Conections</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reports"></tbody>
+                    </table>
+                </div>
+				<h6 class="text-center col-12"><br>Result</h6><br>
+                <div class="col-6 rep-wraper2">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>URL</th>
+                                <th>New Link</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="result"></tbody>
+                    </table>
+                </div>
+                <div class="col-6 rep-wraper2">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>URL</th>
+                                <th>Conections</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="errors"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+	<script src="./../js/jquery.min.js"></script>
+	<script src="./../js/notify.min.js"></script>
+	<script src="./../js/popper.min.js"></script>
+	<script src="./../js/bootstrap.min.js"></script>
+	<script src="./../js/js.cookie.min.js"></script>
+	<script src="./../js/linkleech.js"></script>
+</body>
+</html>
