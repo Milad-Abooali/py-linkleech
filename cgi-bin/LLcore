@@ -19,8 +19,17 @@
 </head>
 
 <body>
-    <div class="col-12 text-center"><a id="do-logout"class="btn btn-outline-danger m-4">Logout</a></div>
     <div class="container">
+		<div class="col-12 row">
+			<div class="col-6"><h1>Link Leecher</h1></div>
+			<div class="col-6 text-right">
+				<span class="btn btn-sm btn-link-primary mt-3 disabled">Clear:</span>
+				<span data-list="queue" class="do-clear btn btn-sm btn-warning mt-3"> Queue</span>
+				<span data-list="errors" class="do-clear btn btn-sm btn-warning mt-3"> Errors Logs</span>
+				<span data-list="result" class="do-clear btn btn-sm btn-warning mt-3">Downloads Logs</span>
+				<span id="do-logout"class="btn btn-sm btn-outline-danger mt-3 ml-3">Logout</span>
+			</div>
+		</div>
         <div class="card-deck mb-3 text-center">
             <div class="col-12">
                 <table class="table">
@@ -67,7 +76,7 @@
                                 <th>Status</th>
                             </tr>
                         </thead>
-                        <tbody id="reports"></tbody>
+                        <tbody id="queue"></tbody>
                     </table>
                 </div>
 				<h6 class="text-center col-12"><br>Result</h6><br>

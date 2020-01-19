@@ -42,7 +42,7 @@ function queue () {
 				let delkey='<button id="do-delete" class="btn btn-sm btn-danger k-del" data-tu="'+resp[k][0]+'" type="button"><strong>X</strong></button>';
 				replistq += '<tr><td class="text-left">'+url+'</td><td>'+path+'</td><td>'+resp[k][2]+'</td><td>'+type+'</td><td><div class="btn-group">'+status+delkey+'</div></td></tr>';
 			}
-			$( "#reports" ).html(replistd+replistq);		   
+			$( "#queue" ).html(replistd+replistq);		   
 		});
 	});
 	$.get('./LLajax.py?act=list&list=result', function(data, status) {
@@ -126,6 +126,19 @@ $(document).ready( function () {
 			});
 	});
 
+	$('body').on('click','.do-clear',function() {
+		let list = $(this).data('list');
+		let string = '?act=clear&list='+list;
+			$.get('./LLajax.py'+string+'&0', function(data, status) {
+				if (data == 1) {
+					$.notify(list +' Logs Cleared', "success");
+					$( "#"+list ).html('');
+				} else {
+					$.notify('Error !');
+				}
+			});
+	});
+	
 	window.setInterval(function(){
 		queue();
 	}, 3300);

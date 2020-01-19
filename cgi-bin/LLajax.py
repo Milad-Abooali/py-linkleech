@@ -67,6 +67,15 @@ if "act" in formdata:
 				else:
 					print('No Target Link')
 
+
+			if LL_action == 'clear':
+				if "list" in formdata:
+					LL_list_type = formdata["list"].value
+					LLlist = open(os.path.dirname(__file__) + './LL'+LL_list_type, "w", encoding='utf-8')
+					LLlist.write('')
+					LLlist.close()
+					print (1)
+					
 					
 			if LL_action == 'list':
 				if "list" in formdata:
