@@ -16,9 +16,9 @@ function validURL(str) {
     '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
   return !!pattern.test(str);
 }
-
+  
 function queue () {
-	sleep(350);
+	sleep(1);
 	$.get('./LLajax.py?act=list&list=progress', function(data, status) {
 		var resp = JSON.parse (data);
 		var replistd;
@@ -46,7 +46,7 @@ function queue () {
 		});
 	});
 	$.get('./LLajax.py?act=list&list=result', function(data, status) {
-		var resp = JSON.parse (data);
+		var resp = JSON.parse(data).reverse();
 		var result;
 		for(var k in resp) {
 			var filename = resp[k][0].replace(/^.*[\\\/]/, '');
@@ -58,7 +58,7 @@ function queue () {
 		$( "#result" ).html(result);		   
 	});
 	$.get('./LLajax.py?act=list&list=errors', function(data, status) {
-		var resp = JSON.parse (data);
+		var resp = JSON.parse(data).reverse();
 		var errors;
 		for(var k in resp) {
 			var filename = resp[k][0].replace(/^.*[\\\/]/, '');
@@ -68,17 +68,12 @@ function queue () {
 			errors += '<tr><td class="text-left">'+url+'</td><td>'+resp[k][2]+'</td><td>'+type+'</td><td><div class="btn-group">'+status+'</div></td></tr>';
 		}
 		$( "#errors" ).html(errors);
-		$("#result, #errors").each(function(elem,index){
-			var arr = $.makeArray($("tr",this).detach());
-			arr.reverse();
-			$(this).append(arr);
-		});
 	});
 }
 
-$(document).ajaxComplete(function() {
-	$('[data-toggle="popover"]').popover({ trigger: "hover" });
-});
+//$(document).ajaxComplete(function() {
+//	$('[data-toggle="popover"]').popover({ trigger: "hover" });
+//});
 
 $(document).ready( function () {
 	
@@ -92,7 +87,7 @@ $(document).ready( function () {
 	$('body').on('click','#do-addQueue',function(){
 		var lines = $('#url').val().split('\n');
 		for(var i = 0;i < lines.length;i++) {
-			sleep(150);
+			sleep(5);
 			var url=lines[i];
 			if (validURL(url)) {
 				var path=$("#path").val();
@@ -141,7 +136,7 @@ $(document).ready( function () {
 	
 	window.setInterval(function(){
 		queue();
-	}, 3300);
+	}, 3000);
 	
 	queue();
 });

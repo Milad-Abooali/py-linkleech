@@ -59,8 +59,8 @@ def LLloop ():
 		LLprogress.write(''+"\n")
 		LLprogress.close()
 		print ('No new Item !')
-	time.sleep(3)
+	time.sleep(1)
 		
 while True:
 	LLloop()
-	time.sleep(2)
+	time.sleep(1)
